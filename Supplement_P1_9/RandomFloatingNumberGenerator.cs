@@ -1,4 +1,6 @@
 ﻿namespace Supplement_P1_9;
+using System.Collections;
+using System.Collections.Generic;
 
 public class RandomFloatingNumberGenerator: IEnumerable<float>
 {
@@ -6,7 +8,21 @@ public class RandomFloatingNumberGenerator: IEnumerable<float>
 
     public IEnumerator<float> GetEnumerator()
     {
-        throw new NotImplementedException();
+         int lowCount = 0;
+
+        while (true)
+        {
+            float number = (float)_random.NextDouble(); // Cast to float
+            yield return number;
+
+            if (number <= 0.5f)
+                lowCount++;
+            else
+                lowCount = 0;
+
+            if (lowCount == 3)
+                throw new InvalidSequenceException();
+        }
     }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
