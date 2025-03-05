@@ -26,7 +26,7 @@ public class Quarter
     /// Determines the quarter of the current value.
     /// </summary>
     /// <returns>An integer representing the quarter (1 to 4).</returns>
-    private int GetQuarter()
+    public int GetQuarter()
     {
         if (Value < 0.25) return 1;
         if (Value < 0.5) return 2;
